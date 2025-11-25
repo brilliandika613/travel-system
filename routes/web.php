@@ -60,25 +60,32 @@ Route::middleware('auth')->group(function () {
     });
 
     // Destinasi
-    Route::resource('destinations', Admin\DestinationController::class);
-
+    Route::controller(Admin\DestinationController::class)->group(function () {
+        Route::get('/destinations','index')->name('admin.destinations.index');
+        Route::get('/destinations-create','create')->name('admin.destinations.create');
+        Route::get('/destinations-edit','edit')->name('admin.destinations.edit');
+    });
+   
     // Testimoni
-    Route::resource('testimonials', Admin\TestimonialController::class);
+    Route::get('testimonials', [Admin\TestimonialController::class, 'index'])->name('admin.testimonials.index');
     Route::patch('testimonials/{testimonial}/approve', [Admin\TestimonialController::class, 'approve'])->name('testimonials.approve');
 
     // Booking
-    Route::resource('bookings', Admin\BookingController::class);
+    Route::get('bookings', [Admin\BookingController::class, 'index'])->name('admin.bookings.index');
     Route::patch('bookings/{booking}/confirm', [Admin\BookingController::class, 'confirm'])->name('bookings.confirm');
     Route::patch('bookings/{booking}/complete', [Admin\BookingController::class, 'complete'])->name('bookings.complete');
     Route::patch('bookings/{booking}/cancel', [Admin\BookingController::class, 'cancel'])->name('bookings.cancel');
 
     // Galeri Foto
-    Route::resource('photos', Admin\PhotoController::class);
+    Route::get('photos', [Admin\PhotoController::class, 'index'])->name('admin.photos.index');
+    Route::get('photos-create', [Admin\PhotoController::class, 'create'])->name('admin.photos.create');
 
     // Laporan
-    Route::get('reports', [Admin\ReportController::class, 'index'])->name('reports.index');
+    Route::get('/reports', [Admin\ReportController::class, 'index'])->name('admin.reports.index');
+    Route::get('/reports-excel', [Admin\ReportController::class, 'exportExcel'])->name('admin.reports.excel');
+    Route::get('/reports-pdf', [Admin\ReportController::class, 'exportPdf'])->name('admin.reports.pdf');
 
     // Pengaturan
     Route::get('settings', [Admin\SettingController::class, 'edit'])->name('settings.edit');
-    Route::put('settings', [Admin\SettingController::class, 'update'])->name('settings.update');
+    Route::put('settings', [Admin\SettingController::class, 'update'])->name('admin.settings.update');
 });

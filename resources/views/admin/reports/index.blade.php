@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Laporan & Analitik')
 
@@ -41,10 +41,10 @@
 
 <!-- Tombol Export -->
 <div class="d-flex mb-4">
-    <a href="{{ route('admin.reports.export.excel') }}" class="btn btn-success me-2">
+    <a href="{{ route('admin.reports.excel') }}" class="btn btn-success me-2">
         <i class="fas fa-file-excel me-1"></i> Export Excel
     </a>
-    <a href="{{ route('admin.reports.export.pdf') }}" class="btn btn-danger">
+    <a href="{{ route('admin.reports.pdf') }}" class="btn btn-danger">
         <i class="fas fa-file-pdf me-1"></i> Export PDF
     </a>
 </div>

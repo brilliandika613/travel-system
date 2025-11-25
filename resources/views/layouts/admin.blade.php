@@ -50,19 +50,19 @@
     <a href="{{ route('admin.tours.index') }}" class="{{ request()->routeIs('tours.*') ? 'active' : '' }}">
         <i class="fas fa-box me-2"></i> Paket Tour
     </a>
-    <a href="{{ route('destinations.index') }}" class="{{ request()->routeIs('destinations.*') ? 'active' : '' }}">
+    <a href="{{ route('admin.destinations.index') }}" class="{{ request()->routeIs('destinations.*') ? 'active' : '' }}">
         <i class="fas fa-mountain me-2"></i> Destinasi
     </a>
-    <a href="{{ route('testimonials.index') }}" class="{{ request()->routeIs('testimonials.*') ? 'active' : '' }}">
+    <a href="{{ route('admin.testimonials.index') }}" class="{{ request()->routeIs('testimonials.*') ? 'active' : '' }}">
         <i class="fas fa-comment me-2"></i> Testimoni
     </a>
-    <a href="{{ route('bookings.index') }}" class="{{ request()->routeIs('bookings.*') ? 'active' : '' }}">
+    <a href="{{ route('admin.bookings.index') }}" class="{{ request()->routeIs('bookings.*') ? 'active' : '' }}">
         <i class="fas fa-calendar-check me-2"></i> Booking
     </a>
-    <a href="{{ route('photos.index') }}" class="{{ request()->routeIs('photos.*') ? 'active' : '' }}">
+    <a href="{{ route('admin.photos.index') }}" class="{{ request()->routeIs('photos.*') ? 'active' : '' }}">
         <i class="fas fa-images me-2"></i> Galeri Foto
     </a>
-    <a href="{{ route('reports.index') }}" class="{{ request()->routeIs('reports.*') ? 'active' : '' }}">
+    <a href="{{ route('admin.reports.index') }}" class="{{ request()->routeIs('reports.*') ? 'active' : '' }}">
         <i class="fas fa-file-alt me-2"></i> Laporan
     </a>
     <a href="{{ route('settings.edit') }}" class="{{ request()->routeIs('settings.*') ? 'active' : '' }}">
