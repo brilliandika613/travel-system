@@ -56,7 +56,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="{{ route('booking.history') }}"><i class="fas fa-history me-2"></i> Riwayat</a></li>
                             @if(Auth::user()->role === 'admin')
-                                <li><a class="dropdown-item" href="/admin"><i class="fas fa-lock me-2"></i> Admin Panel</a></li>
+                                <li><a class="dropdown-item" href="{{route('dashboard')}}"><i class="fas fa-lock me-2"></i> Admin Panel</a></li>
                             @endif
                             <li><hr class="dropdown-divider"></li>
                             <li>

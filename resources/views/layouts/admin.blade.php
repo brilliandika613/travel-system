@@ -44,28 +44,28 @@
         <small>Admin Panel</small>
     </div>
     <hr>
-    <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+    <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
         <i class="fas fa-tachometer-alt me-2"></i> Dashboard
     </a>
-    <a href="{{ route('admin.tours.index') }}" class="{{ request()->routeIs('admin.tours.*') ? 'active' : '' }}">
+    <a href="{{ route('admin.tours.index') }}" class="{{ request()->routeIs('tours.*') ? 'active' : '' }}">
         <i class="fas fa-box me-2"></i> Paket Tour
     </a>
-    <a href="{{ route('admin.destinations.index') }}" class="{{ request()->routeIs('admin.destinations.*') ? 'active' : '' }}">
+    <a href="{{ route('destinations.index') }}" class="{{ request()->routeIs('destinations.*') ? 'active' : '' }}">
         <i class="fas fa-mountain me-2"></i> Destinasi
     </a>
-    <a href="{{ route('admin.testimonials.index') }}" class="{{ request()->routeIs('admin.testimonials.*') ? 'active' : '' }}">
+    <a href="{{ route('testimonials.index') }}" class="{{ request()->routeIs('testimonials.*') ? 'active' : '' }}">
         <i class="fas fa-comment me-2"></i> Testimoni
     </a>
-    <a href="{{ route('admin.bookings.index') }}" class="{{ request()->routeIs('admin.bookings.*') ? 'active' : '' }}">
+    <a href="{{ route('bookings.index') }}" class="{{ request()->routeIs('bookings.*') ? 'active' : '' }}">
         <i class="fas fa-calendar-check me-2"></i> Booking
     </a>
-    <a href="{{ route('admin.photos.index') }}" class="{{ request()->routeIs('admin.photos.*') ? 'active' : '' }}">
+    <a href="{{ route('photos.index') }}" class="{{ request()->routeIs('photos.*') ? 'active' : '' }}">
         <i class="fas fa-images me-2"></i> Galeri Foto
     </a>
-    <a href="{{ route('admin.reports.index') }}" class="{{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
+    <a href="{{ route('reports.index') }}" class="{{ request()->routeIs('reports.*') ? 'active' : '' }}">
         <i class="fas fa-file-alt me-2"></i> Laporan
     </a>
-    <a href="{{ route('admin.settings.edit') }}" class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
+    <a href="{{ route('settings.edit') }}" class="{{ request()->routeIs('settings.*') ? 'active' : '' }}">
         <i class="fas fa-cog me-2"></i> Pengaturan
     </a>
     <hr>

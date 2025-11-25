@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Dashboard')
 
@@ -34,11 +34,9 @@
     </div>
 </div>
 
-<!-- Pesan Selamat Datang -->
 <div class="card">
     <div class="card-body text-center">
-        <h5>Selamat datang di Admin Panel Meity Travel</h5>
-        <p>Kelola paket tour, destinasi, testimoni, dan pemesanan langsung dari sini.</p>
+        <h5>Data Kosong</h5>
     </div>
 </div>
 @endsection
