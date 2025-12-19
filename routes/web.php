@@ -24,8 +24,8 @@ Route::post('/register', [RegisterController::class, 'register']);
 // Tour
 use App\Http\Controllers\TourController;
 Route::get('/paket-tour', [TourController::class, 'index'])->name('tours.index');
+Route::get('/paket-tour/kategori/{type}', [TourController::class, 'showByType'])->name('tours.byType');
 Route::get('/paket-tour/{tour:slug}', [TourController::class, 'show'])->name('tours.show');
-Route::get('/paket-tour/{type}', [TourController::class, 'showByType'])->name('tours.byType');
 
 // Booking (hanya untuk user login)
 Route::middleware('auth')->group(function () {
