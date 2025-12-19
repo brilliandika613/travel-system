@@ -7,9 +7,16 @@
 
     <!-- Tombol Toggle -->
     <div class="d-flex justify-content-center mb-4">
-        <button id="btnDomestic" class="btn btn-primary me-2 active">📍 Tour Domestik</button>
-        <button id="btnInternational" class="btn btn-outline-primary">🌐 Tour Internasional</button>
-    </div>
+    <a href="{{ route('tours.byType', 'domestic') }}"
+       class="btn {{ request()->is('paket-tour/kategori/domestic') ? 'btn-primary' : 'btn-outline-primary' }} me-2">
+        📍 Tour Domestik
+    </a>
+
+    <a href="{{ route('tours.byType', 'international') }}"
+       class="btn {{ request()->is('paket-tour/kategori/international') ? 'btn-primary' : 'btn-outline-primary' }}">
+        🌐 Tour Internasional
+    </a>
+</div>
 
     <!-- Daftar Paket Tour -->
     <div id="tourContainer" class="row g-4 mt-2">
