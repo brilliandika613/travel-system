@@ -8,7 +8,7 @@
     <div class="hero-overlay">
         <h1 class="display-4">Jelajahi Keindahan Indonesia</h1>
         <p class="lead">Temukan pengalaman perjalanan tak terlupakan ke destinasi terbaik di Indonesia</p>
-        <a href="#tours" class="btn btn-light btn-lg mt-3">Lihat Paket Tour</a>
+        <a href="{{route('tours.index')}}" class="btn btn-light btn-lg mt-3">Lihat Paket Tour</a>
     </div>
 </section>
 
@@ -16,7 +16,7 @@
 <section id="tours" class="py-5">
     <div class="container">
         <div class="text-center mb-5">
-        <span class="badge bg-primary mb-3">Paket Tour Terbaik</span>
+        <span class="badge bg-primary mb-3">Paket Tour</span>
         <h5>Paket Tour Pilihan</h5>
         <p class="text-muted">Nikmati pengalaman perjalanan tak terlupakan dengan paket tour terbaik kami</p>
         </div>
@@ -25,7 +25,7 @@
             @foreach($tours as $tour)
             <div class="col-md-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="{{ $tour->image_url ? asset('storage/' . $tour->image_url) : 'https://via.placeholder.com/400x300?text=' . urlencode($tour->name) }}" 
+                    <img src="{{ $tour->image_url ? asset('storage/image/' . $tour->name . '.jpg') : 'https://via.placeholder.com/400x300?text=' . urlencode($tour->name) }}" 
                          class="card-img-top" alt="{{ $tour->name }}" style="height: 200px; object-fit: cover;">
                     <div class="card-body">
                         <h5>{{ $tour->name }}</h5>
@@ -37,9 +37,7 @@
             </div>
             @endforeach
         </div>
-        <div class="text-center mt-4">
-            <a href="{{ route('tours.index') }}" class="btn btn-outline-primary">Lihat Semua Paket</a>
-        </div>
+        
     </div>
 </section>
 

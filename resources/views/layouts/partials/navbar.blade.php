@@ -17,26 +17,12 @@
                 </li>
 
                 <!-- Dropdown Paket Tour -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ request()->is('paket-tour*') ? 'active' : '' }}" href="#" id="tourDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Paket Tour
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="tourDropdown">
-                        <li>
-                            <a class="dropdown-item" href="{{ route('tours.byType', 'domestic') }}">
-                                <i class="fas fa-map-marker-alt me-2"></i> Tour Domestik
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{{ route('tours.byType', 'international') }}">
-                                <i class="fas fa-globe me-2"></i> Tour Internasional
-                            </a>
-                        </li>
-                    </ul>
+             <li class="nav-item">
+                    <a class="nav-link" href="{{ route('tours.index') }}#destinasi">Paket Tour</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}#destinasi">Destinasi</a>
+                    <a class="nav-link" href="{{ route('destinations.index') }}#destinasi">Destinasi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}#testimonials">Testimoni</a>
@@ -74,7 +60,7 @@
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-sm btn-outline-primary ms-2" href="{{ route('register') }}">Daftar</a>
+                        <a class="nav-link" href="{{ route('register') }}">Daftar</a>
                     </li>
                 @endauth
             </ul>
