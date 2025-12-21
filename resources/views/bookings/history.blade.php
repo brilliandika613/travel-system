@@ -39,7 +39,7 @@
                                 <em class="text-muted">Tour tidak tersedia</em>
                             @endif
                         </td>
-                        <td>{{ $booking->departure_date->format('d M Y') }}</td>
+                        <td>{{ $booking->departure_date }}</td>
                         <td>{{ $booking->participants }}</td>
                         <td>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</td>
                         <td>

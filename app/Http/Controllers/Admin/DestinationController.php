@@ -12,7 +12,7 @@ class DestinationController extends Controller
 {
     public function index()
     {
-        $destinations = Destination::latest()->get();
+        $destinations = Destination::get();
         return view('admin.destinations.index', compact('destinations'));
     }
 
@@ -45,9 +45,10 @@ class DestinationController extends Controller
         return redirect()->route('admin.destinations.index')->with('success', 'Destinasi berhasil ditambahkan!');
     }
 
-    public function edit(Destination $destination)
+    public function edit($id)
     {
-        return view('admin.destinations.edit', compact('destination'));
+        $destinations = Destination::where('id',$id)->get();
+        return view('admin.destinations.edit', compact('destinations'));
     }
 
     public function update(Request $request, Destination $destination)
@@ -58,17 +59,18 @@ class DestinationController extends Controller
             'category' => 'required|in:pulau,gunung,diving,wildlife,adventure,other',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-
-        $slug = Str::slug($request->name);
-
+    
+        $slug = Str::slug($request->name . '-' . $destination->id);
+    
         $imagePath = $destination->image_url;
+    
         if ($request->hasFile('image')) {
             if ($destination->image_url) {
                 Storage::disk('public')->delete($destination->image_url);
             }
             $imagePath = $request->file('image')->store('destinations', 'public');
         }
-
+    
         $destination->update([
             'name' => $request->name,
             'slug' => $slug,
@@ -76,16 +78,20 @@ class DestinationController extends Controller
             'category' => $request->category,
             'image_url' => $imagePath,
         ]);
-
-        return redirect()->route('admin.destinations.index')->with('success', 'Destinasi berhasil diperbarui!');
+    
+        return redirect()
+            ->route('admin.destinations.index')
+            ->with('success', 'Destinasi berhasil diperbarui!');
     }
+    
 
-    public function destroy(Destination $destination)
+    public function destroy(Destination $id)
     {
+        $destination = $id;   
+        $destination->delete();
         if ($destination->image_url) {
             Storage::disk('public')->delete($destination->image_url);
         }
-        $destination->delete();
         return redirect()->route('admin.destinations.index')->with('success', 'Destinasi berhasil dihapus!');
     }
 }

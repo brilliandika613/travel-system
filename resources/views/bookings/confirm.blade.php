@@ -11,6 +11,9 @@
                     <p><strong>Total:</strong> Rp {{ number_format($booking->total_price, 0, ',', '.') }}</p>
                     <p><strong>Status:</strong> {{ ucfirst($booking->status) }}</p>
                     <hr>
+                    <p><strong>Nama Bank:</strong>Bank Mandiri</p>
+                    <p><strong>Nomor Rekening:</strong>234523452</p>
+                    <p><strong>Alias:</strong>Brilian Brian Aditya</p>
                     <form method="POST" action="{{ route('booking.upload-proof', $booking->id) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">

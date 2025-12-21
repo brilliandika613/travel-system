@@ -64,7 +64,7 @@
                 <td><strong>#{{ $booking->id }}</strong></td>
                 <td>{{ $booking->user->name ?? 'User dihapus' }}<br><small>{{ $booking->user->email ?? '' }}</small></td>
                 <td>{{ $booking->tour->name ?? 'Tour dihapus' }}</td>
-                <td>{{ $booking->departure_date->format('d M Y') }}</td>
+                <td>{{ $booking->departure_date }}</td>
                 <td>{{ $booking->participants }}</td>
                 <td>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</td>
                 <td>

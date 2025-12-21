@@ -20,7 +20,7 @@
                 <p>
                     <strong>{{ $booking->tour->name ?? 'Tour dihapus' }}</strong><br>
                     Lokasi: {{ $booking->tour->location ?? '-' }}<br>
-                    Tanggal: {{ $booking->departure_date->format('d F Y') }}<br>
+                    Tanggal: {{ $booking->departure_date}}<br>
                     Peserta: {{ $booking->participants }} orang<br>
                     Total: <strong>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</strong>
                 </p>

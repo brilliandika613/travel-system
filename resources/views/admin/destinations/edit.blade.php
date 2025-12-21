@@ -3,6 +3,7 @@
 @section('title', 'Edit Destinasi')
 
 @section('content')
+@foreach ($destinations as $destination)
 <div class="card">
     <div class="card-header">
         <h5>Edit Destinasi: {{ $destination->name }}</h5>
@@ -11,6 +12,7 @@
         <form method="POST" action="{{ route('admin.destinations.update', $destination->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            
             <div class="mb-3">
                 <label>Nama Destinasi</label>
                 <input type="text" name="name" class="form-control" value="{{ old('name', $destination->name) }}" required>
@@ -47,4 +49,5 @@
         </form>
     </div>
 </div>
+@endforeach
 @endsection

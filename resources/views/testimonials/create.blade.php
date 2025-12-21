@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Beri Ulasan untuk: {{ $tour->name }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('testimonials.index') }}">
+                    <form method="POST" action="{{ route('testimonials.store') }}">
                         @csrf
                         <input type="hidden" name="tour_id" value="{{ $tour->id }}">
 
@@ -18,13 +18,15 @@
 
                         <div class="mb-3">
                             <label>Rating</label><br>
-                            <div class="rating">
+                            <div class="rating" data-rating="0">
                                 @for($i = 1; $i <= 5; $i++)
-                                    <input type="radio" id="star{{ $i }}" name="rating" value="{{ $i }}" required>
-                                    <label for="star{{ $i }}" style="font-size: 24px; cursor: pointer;">★</label>
+                                    <span class="star" data-value="{{ $i }}">★</span>
                                 @endfor
                             </div>
                         </div>
+
+                        <!-- nilai rating akan disimpan di sini -->
+                        <input type="hidden" name="rating" id="ratingValue" required>
 
                         <div class="mb-3">
                             <label>Ulasan Anda</label>
@@ -39,16 +41,39 @@
     </div>
 </div>
 
-<style>
-.rating input[type="radio"] {
-    display: none;
-}
-.rating input[type="radio"]:checked ~ label,
-.rating input[type="radio"]:hover ~ label {
-    color: #ffc107;
-}
-.rating label {
-    color: #ddd;
-}
-</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('ratingValue');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+        // Hover
+        star.addEventListener('mouseover', function () {
+            const value = this.dataset.value;
+            highlightStars(value);
+        });
+
+        // Klik
+        star.addEventListener('click', function () {
+            selectedRating = this.dataset.value;
+            ratingInput.value = selectedRating;
+        });
+
+        // Keluar hover
+        star.addEventListener('mouseleave', function () {
+            highlightStars(selectedRating);
+        });
+    });
+
+    function highlightStars(value) {
+        stars.forEach(star => {
+            star.style.color = star.dataset.value <= value
+                ? '#ffc107'
+                : '#ddd';
+        });
+    }
+});
+</script>
+
 @endsection

@@ -16,8 +16,9 @@ class BookingController extends Controller
         return view('admin.bookings.index', compact('bookings'));
     }
 
-    public function show(Booking $booking)
+    public function show($booking)
     {
+        $booking = Booking::where('id', $booking)->first();
         return view('admin.bookings.show', compact('booking'));
     }
 

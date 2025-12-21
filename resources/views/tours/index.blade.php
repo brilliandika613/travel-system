@@ -23,7 +23,11 @@
         @foreach($tours as $tour)
         <div class="col-md-4 tour-item" data-type="{{ $tour->type }}">
             <div class="card h-100 shadow-sm">
-                <img src="{{ asset('storage/image/' . $tour->name . '.jpg') }}" class="card-img-top" alt="{{ $tour->name }}" style="height: 200px; object-fit: cover;">
+                <img src="{{
+                \Illuminate\Support\Facades\Storage::disk('public')->exists('image/' . $tour->name . '.jpg')
+                        ? asset('storage/image/' . $tour->name . '.jpg')
+                        : asset('storage/' . $tour->image_url)
+                }}" class="card-img-top" alt="{{ $tour->name }}" style="height: 200px; object-fit: cover;">
                 <div class="card-body d-flex flex-column">
                     <span class="badge bg-info mb-2">{{ ucfirst($tour->category) }}</span>
                     <h5 class="card-title">{{ $tour->name }}</h5>

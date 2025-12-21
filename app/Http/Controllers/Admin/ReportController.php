@@ -62,17 +62,26 @@ class ReportController extends Controller
 
     public function exportExcel()
     {
-        // Akan diisi nanti dengan library seperti PhpSpreadsheet
         return response()->streamDownload(function () {
-            echo "Fitur export Excel akan diaktifkan segera.";
-        }, 'laporan-booking.xlsx');
+            echo "Export laporan booking ke format Excel masih dalam tahap pengembangan.\n";
+            echo "Silakan gunakan fitur ini pada versi selanjutnya.";
+        }, 'laporan-booking.xlsx', [
+            'Content-Type' => 'text/plain',
+        ]);
     }
 
     public function exportPdf()
     {
-        // Akan diisi nanti dengan library seperti DomPDF
         return response()->streamDownload(function () {
-            echo "Fitur export PDF akan diaktifkan segera.";
-        }, 'laporan-booking.pdf');
+            echo "%PDF-1.4\n";
+            echo "1 0 obj<<>>endobj\n";
+            echo "Export laporan booking ke format PDF masih dalam tahap pengembangan.\n";
+            echo "Fitur ini akan tersedia pada update berikutnya.";
+            echo "trailer<<>>\n";
+            echo "%%EOF";
+        }, 'laporan-booking.pdf', [
+            'Content-Type' => 'application/pdf',
+        ]);
     }
+
 }

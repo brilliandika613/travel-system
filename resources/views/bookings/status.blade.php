@@ -19,7 +19,7 @@
                             <em>Tour dihapus</em>
                         @endif
                     </p>
-                    <p><strong>Tanggal Berangkat:</strong> {{ $booking->departure_date->format('d F Y') }}</p>
+                    <p><strong>Tanggal Berangkat:</strong> {{ $booking->departure_date }}</p>
                     <p><strong>Jumlah Peserta:</strong> {{ $booking->participants }} orang</p>
                     <p><strong>Total Pembayaran:</strong> <strong class="text-primary">Rp {{ number_format($booking->total_price, 0, ',', '.') }}</strong></p>
                     
@@ -43,7 +43,6 @@
                             {{ $booking->payment_status === 'lunas' ? 'Lunas' : 'Belum Bayar' }}
                         </span>
                     </p>
-
                     @if($booking->payment_proof)
                         <div class="mt-3">
                             <strong>Bukti Pembayaran:</strong><br>

@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Destination extends Model
 {
-    //
+    protected $fillable = [
+        'name', 'slug', 'description', 'category', 'image_url'
+    ];
 }

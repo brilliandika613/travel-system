@@ -25,7 +25,11 @@
             @foreach($tours as $tour)
             <div class="col-md-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="{{ $tour->image_url ? asset('storage/image/' . $tour->name . '.jpg') : 'https://via.placeholder.com/400x300?text=' . urlencode($tour->name) }}" 
+                    <img src="{{
+                        \Illuminate\Support\Facades\Storage::disk('public')->exists('image/' . $tour->name . '.jpg')
+                        ? asset('storage/image/' . $tour->name . '.jpg')
+                        : asset('storage/' . $tour->image_url)
+                     }}" 
                          class="card-img-top" alt="{{ $tour->name }}" style="height: 200px; object-fit: cover;">
                     <div class="card-body">
                         <h5>{{ $tour->name }}</h5>

@@ -20,16 +20,18 @@ class BookingController extends Controller
     // Simpan booking
     public function store(Request $request)
     {
+
         $request->validate([
             'tour_id' => 'required|exists:tours,id',
             'departure_date' => 'required|date|after:today',
             'participants' => 'required|integer|min:1|max:100',
         ]);
 
-        // Ambil tour berdasarkan tour_id
-    $tour = Tour::findOrFail($request->tour_id);
-    $total = $tour->price * $request->participants;
 
+        // Ambil tour berdasarkan tour_id
+        $tour = Tour::findOrFail($request->tour_id);
+        $total = $tour->price * $request->participants;
+        
         $booking = Booking::create([
             'user_id' => Auth::id(), // ✅ Cara paling aman
             'tour_id' => $tour->id,
@@ -39,6 +41,7 @@ class BookingController extends Controller
             'status' => 'pending',
             'payment_status' => 'pending',
         ]);
+
 
         return redirect()->route('booking.confirm', $booking->id);
     }

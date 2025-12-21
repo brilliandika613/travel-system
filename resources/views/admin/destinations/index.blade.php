@@ -12,7 +12,9 @@
     @forelse($destinations as $destination)
     <div class="col-md-4">
         <div class="card h-100 shadow-sm">
-            <img src="{{ asset('storage/' . $destination->image_url) }}" 
+            <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->exists('image/' . $destination->name . '.jpg')
+                        ? asset('storage/image/' . $destination->name . '.jpg')
+                        : asset('storage/' . $destination->image_url) }}" 
                  class="card-img-top" 
                  alt="{{ $destination->name }}"
                  style="height: 200px; object-fit: cover;">

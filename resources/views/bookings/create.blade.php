@@ -12,6 +12,7 @@
                     <p><strong>Harga per orang:</strong> Rp {{ number_format($tour->price, 0, ',', '.') }}</p>
                     <form method="POST" action="{{ route('booking.store', $tour->slug) }}">
                         @csrf
+                        <input name="tour_id" type="hidden" value="{{$tour->id}}">
                         <div class="mb-3">
                             <label>Tanggal Keberangkatan</label>
                             <input type="date" name="departure_date" class="form-control" required min="{{ date('Y-m-d', strtotime('+1 day')) }}">

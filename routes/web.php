@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
 // Testimoni publik (bisa diakses tanpa login)
 Route::get('/testimoni/create/{tour:slug}', [TestimonialController::class, 'create'])->name('testimonials.create');
 Route::get('/testimoni', [TestimonialController::class, 'publicIndex'])->name('testimonials.index');
+Route::post('/testimoni/store', [TestimonialController::class, 'store'])->name('testimonials.store');
 
 // Destinasi (publik)
 Route::get('/destinasi', [DestinationController::class, 'index'])->name('destinations.index');
@@ -56,25 +57,33 @@ Route::middleware('auth')->group(function () {
     Route::controller(Admin\TourController::class)->group(function () {
         Route::get('/tours','index')->name('admin.tours.index');
         Route::get('/tours-create','create')->name('admin.tours.create');
-        Route::get('/tours-store','store')->name('admin.tours.store');
+        Route::post('/tours-store','store')->name('admin.tours.store');
+        Route::get('/tours-edit/{tour}','edit')->name('admin.tours.edit');
+        Route::put('/tours-update/{tour}','update')->name('admin.tours.update');
+        Route::delete('/tours-destroy/{tour}','destroy')->name('admin.tours.destroy');
     });
 
     // Destinasi
     Route::controller(Admin\DestinationController::class)->group(function () {
         Route::get('/destinations','index')->name('admin.destinations.index');
         Route::get('/destinations-create','create')->name('admin.destinations.create');
-        Route::get('/destinations-edit','edit')->name('admin.destinations.edit');
+        Route::get('/destinations-edit/{id}','edit')->name('admin.destinations.edit');
+        Route::post('/destinations-store','store')->name('admin.destinations.store');
+        Route::put('/destinations-update/{destination}','update')->name('admin.destinations.update');
+        Route::delete('/destinations-destroy/{id}','destroy')->name('admin.destinations.destroy');
     });
    
     // Testimoni
     Route::get('testimonials', [Admin\TestimonialController::class, 'index'])->name('admin.testimonials.index');
-    Route::patch('testimonials/{testimonial}/approve', [Admin\TestimonialController::class, 'approve'])->name('testimonials.approve');
+    Route::patch('testimonials/{testimonial}/approve', [Admin\TestimonialController::class, 'approve'])->name('admin.testimonials.approve');
+    Route::delete('testimonials/{testimonial}/destroy', [Admin\TestimonialController::class, 'destroy'])->name('admin.testimonials.destroy');
 
     // Booking
     Route::get('bookings', [Admin\BookingController::class, 'index'])->name('admin.bookings.index');
-    Route::patch('bookings/{booking}/confirm', [Admin\BookingController::class, 'confirm'])->name('bookings.confirm');
-    Route::patch('bookings/{booking}/complete', [Admin\BookingController::class, 'complete'])->name('bookings.complete');
-    Route::patch('bookings/{booking}/cancel', [Admin\BookingController::class, 'cancel'])->name('bookings.cancel');
+    Route::get('bookings/show/{booking}', [Admin\BookingController::class, 'show'])->name('admin.bookings.show');
+    Route::patch('bookings/{booking}/confirm', [Admin\BookingController::class, 'confirm'])->name('admin.bookings.confirm');
+    Route::patch('bookings/{booking}/complete', [Admin\BookingController::class, 'complete'])->name('admin.bookings.complete');
+    Route::patch('bookings/{booking}/cancel', [Admin\BookingController::class, 'cancel'])->name('admin.bookings.cancel');
 
     // Galeri Foto
     Route::get('photos', [Admin\PhotoController::class, 'index'])->name('admin.photos.index');
