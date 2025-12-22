@@ -11,6 +11,12 @@
                 <i class="far fa-clock me-2"></i> {{ $tour->duration_days }} Hari {{ $tour->duration_nights }} Malam |
                 <i class="fas fa-users me-2"></i> Min. {{ $tour->min_people }} Orang
             </p>
+            @if($tour->type === 'international')
+              <div class="alert alert-danger py-1 mb-2 text-center">
+                  <i class="fas fa-passport me-1"></i>
+                  <strong>Dibutuhkan Passport</strong>
+              </div>
+            @endif
             <div class="mb-4">
                 <h5>Deskripsi</h5>
                 <p>{{ $tour->description }}</p>

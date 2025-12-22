@@ -16,7 +16,13 @@ class ReportController extends Controller
         $totalBookings = Booking::count();
         $totalRevenue = Booking::where('status', 'completed')->sum('total_price');
         $totalParticipants = Booking::sum('participants');
-        $conversionRate = $totalBookings > 0 ? round(($totalBookings / User::count()) * 100, 2) : 0;
+
+        // Hitung jumlah user unik yang melakukan booking
+        $totalUsersWithBooking = Booking::distinct('user_id')->count('user_id');
+        $totalUsers = User::count();
+
+        $conversionRate = $totalUsers > 0 ? round(($totalUsersWithBooking / $totalUsers) * 100, 2) : 0;
+
 
         // Laporan booking terbaru
         $recentBookings = Booking::with('user', 'tour')
